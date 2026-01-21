@@ -15,3 +15,4 @@ This repository provides complete hardware implementation guides:
 - **[Bill of Materials (BOM)](BOM.md)** - Complete list of components with prices and suppliers
 - **[3D Printing Guide](3D_printing_guide.md)** - Instructions for printing custom parts
 - **[Assembly Guide](Assembly_guide.md)** - Step-by-step assembly instructions
+- **Tactile sensor** - See [FlexiTac](https://flexitac.github.io)
