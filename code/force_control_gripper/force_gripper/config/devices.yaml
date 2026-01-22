@@ -1,0 +1,30 @@
+devices:
+  right:
+    vid: 1027          # 0x0403 (FTDI)
+    pid: 24577         # 0x6001
+    serial: "B0012Y6T"
+    manufacturer: "FTDI"
+
+  left:
+    vid: 1027
+    pid: 24577
+    serial: "B0012Q7H"
+    manufacturer: "FTDI"
+
+  gripper:
+    vid: 12125         # Microsoft USB-Serial bridge
+    pid: 8706
+    serial: "9520190A50304A46462E3120FF0A1215"
+    manufacturer: "Microsoft"
+
+  gripper_ch340:
+    vid: 6790
+    pid: 29987
+    serial: null
+    manufacturer: null
+
+  teleoperator:
+    vid: 12125         # Microsoft USB-Serial bridge
+    pid: 8706
+    serial: "B493AA7D50304A46462E3120FF0D152C"
+    manufacturer: "Microsoft"
