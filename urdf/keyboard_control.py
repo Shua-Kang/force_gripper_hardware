@@ -7,6 +7,7 @@ Controls
   C / Down arrow   : close the gripper
   Space            : toggle fully open / fully closed
   R                : reset to closed
+  V                : cycle display mode (visual + collision / visual / collision)
   Q / Esc          : quit
 
 The two fingers are driven symmetrically:
@@ -19,6 +20,8 @@ import os
 import time
 import pybullet as p
 import pybullet_data
+
+from collision_visual import CollisionVisualizer
 
 # ---------------------------------------------------------------- setup
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -40,6 +43,9 @@ robotID = p.loadURDF(
     useFixedBase=True,
     flags=p.URDF_USE_INERTIA_FROM_FILE,
 )
+
+# Green ghost overlay of the URDF <collision> meshes; V cycles display modes.
+collision_vis = CollisionVisualizer(robotID, URDF_PATH)
 
 # ---------------------------------------------------------------- joints
 # Map joint names -> index so we don't hard-code indices.
@@ -84,6 +90,7 @@ print("  O / Up    : open")
 print("  C / Down  : close")
 print("  Space     : toggle open/closed")
 print("  R         : reset (closed)")
+print("  V         : cycle visual/collision display")
 print("  Q / Esc   : quit\n")
 
 running = True
@@ -111,8 +118,10 @@ while running:
 
     opening = max(0.0, min(1.0, opening))
     apply_opening(opening)
+    collision_vis.handle_keys(keys)
 
     p.stepSimulation()
+    collision_vis.sync()
     time.sleep(1.0 / 240.0)
 
 p.disconnect()

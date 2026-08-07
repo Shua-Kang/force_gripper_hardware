@@ -33,6 +33,7 @@ Controls
     O / Up     : open  (left -> 0, right -> 1)            (hold)
     Space      : toggle fully open / closed-at-middle
     R          : reset to fully open (left=0, right=1)
+    V          : cycle display mode (visual + collision / visual / collision)
     Q / Esc    : quit
 """
 
@@ -40,6 +41,8 @@ import os
 import time
 import pybullet as p
 import pybullet_data
+
+from collision_visual import CollisionVisualizer
 
 # ---------------------------------------------------------------- setup
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -65,6 +68,9 @@ robotID = p.loadURDF(
     # we want -- only finger-vs-finger contact matters here.
     flags=p.URDF_USE_INERTIA_FROM_FILE | p.URDF_USE_SELF_COLLISION,
 )
+
+# Green ghost overlay of the URDF <collision> meshes; V cycles display modes.
+collision_vis = CollisionVisualizer(robotID, URDF_PATH)
 
 # ---------------------------------------------------------------- joints
 # Map joint names -> index so we don't hard-code indices.
@@ -117,6 +123,7 @@ print("\n=== Independent keyboard controls ===")
 print("  LEFT : A=move right  Z=move left")
 print("  RIGHT: K=move left   M=move right")
 print("  BOTH : C/Down=close  O/Up=open  Space=toggle  R=reset  Q/Esc=quit")
+print("  VIEW : V=cycle visual/collision display")
 print("  (fingertips collide -- they won't pass through each other)\n")
 
 running = True
@@ -160,8 +167,10 @@ while running:
     s_left = clamp01(s_left)
     s_right = clamp01(s_right)
     apply_state(s_left, s_right)
+    collision_vis.handle_keys(keys)
 
     p.stepSimulation()
+    collision_vis.sync()
     time.sleep(1.0 / 240.0)
 
 p.disconnect()

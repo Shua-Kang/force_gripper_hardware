@@ -214,4 +214,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-.DS_Store
+.DS_Store__pycache__/
+*.pyc
+# machine-specific (absolute mesh paths); regenerate with scripts/make_panda_with_gripper.py
+urdf/panda_with_force_gripper.urdf

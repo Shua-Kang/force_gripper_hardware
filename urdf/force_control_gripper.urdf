@@ -15,7 +15,7 @@
         <collision name="left_figure_collision">
             <origin xyz="0.0054782322593601405 -0.002538307703411997 0.054754926046441506" rpy="-3.141592653589793 3.570089879990766e-13 -3.141592653589793" />
             <geometry>
-                <mesh filename="meshes/left_figure.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="meshes/collision/left_figure_collision.obj" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -34,7 +34,7 @@
         <collision name="right_figure_collision">
             <origin xyz="0.005521764887499895 0.002538307703411878 0.10475492527903174" rpy="-3.141592653589793 3.5688652331916185e-13 0.0" />
             <geometry>
-                <mesh filename="meshes/right_figure.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="meshes/collision/right_figure_collision.obj" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
@@ -53,7 +53,7 @@
         <collision name="base-1_collision">
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-                <mesh filename="meshes/base-1.stl" scale="0.001 0.001 0.001" />
+                <mesh filename="meshes/collision/base-1_collision.obj" scale="0.001 0.001 0.001" />
             </geometry>
         </collision>
     </link>
